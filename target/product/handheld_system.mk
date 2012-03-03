@@ -81,8 +81,12 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_VENDOR_PROPERTIES += \
     ro.carrier?=unknown \
+
+ifeq ($(OCTAVI_BUILD),)
+PRODUCT_VENDOR_PROPERTIES += \
     ro.config.notification_sound?=OnTheHunt.ogg \
     ro.config.alarm_alert?=Alarm_Classic.ogg
+endif
 
 # Traceur for debug only
 PRODUCT_PACKAGES_ENG += \
