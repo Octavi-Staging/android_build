@@ -164,6 +164,7 @@ def WriteFullOTAPackage(input_zip, output_file):
   #script.AssertOlderBuild(ts, ts_text)
 
   target_info.WriteDeviceAssertions(script, OPTIONS.oem_no_mount)
+  script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
   device_specific.FullOTA_Assertions()
 
   block_diff_dict = GetBlockDifferences(target_zip=input_zip, source_zip=None,
