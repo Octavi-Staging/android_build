@@ -57,4 +57,5 @@ if [ -n "$BUILD_THUMBPRINT" ] ; then
   echo "ro.build.thumbprint=$BUILD_THUMBPRINT"
 fi
 
+echo "ro.octavi.device=$OCTAVI_DEVICE"
 echo "# end build properties"
