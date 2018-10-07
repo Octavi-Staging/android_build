@@ -6154,6 +6154,16 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(OCTAVI_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(OCTAVI_TARGET_PACKAGE) > $(OCTAVI_TARGET_PACKAGE).md5sum
+
+  echo -e "**************************************************"
+  echo -e "   ____  _______________ _    ______   ____  _____"
+  echo -e "  / __ \/ ____/_  __/   | |  / /  _/  / __ \/ ___/"
+  echo -e " / / / / /     / / / /| | | / // /   / / / /\__ \ "
+  echo -e "/ /_/ / /___  / / / ___ | |/ // /   / /_/ /___/ / "
+  echo -e "\____/\____/ /_/ /_/  |_|___/___/   \____//____/  "
+  echo -e "                                                  "
+  echo -e "**************************************************"
+
 	@echo "**Package completed"**: $(OCTAVI_TARGET_PACKAGE)"
 
 ifeq ($(BOARD_BUILD_RETROFIT_DYNAMIC_PARTITIONS_OTA_PACKAGE),true)
