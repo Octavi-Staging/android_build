@@ -157,7 +157,8 @@ class EdifyGenerator(object):
     self.script.append(self.WordWrap(cmd))
 
   def RunBackup(self, command, mount_point, dynamic=False):
-    systemEntry = self.fstab[mount_point]
+    if self.fstab:
+      p = self.fstab[mount_point]
     if dynamic:
       for p in ["vendor", "product", "system_ext"]:
         fstabEntry = self.fstab.get("/"+p, None)
@@ -165,10 +166,10 @@ class EdifyGenerator(object):
           self.script.append('map_partition("%s");' % (fstabEntry.device,))
 
       self.script.append(('run_program("/tmp/install/bin/backuptool.sh", "%s", map_partition("%s"), "%s");' % (
-          command, systemEntry.device, systemEntry.fs_type)))
+          command, p.device, p.fs_type)))
     else:
       self.script.append(('run_program("/tmp/install/bin/backuptool.sh", "%s", "%s", "%s");' % (
-          command, systemEntry.device, systemEntry.fs_type)))
+          command, p.device, p.fs_type)))
 
   def ShowProgress(self, frac, dur):
     """Update the progress bar, advancing it over 'frac' over the next
