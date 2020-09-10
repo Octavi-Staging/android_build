@@ -2007,6 +2007,7 @@ if [ -z ${CCACHE_EXEC} ]; then
 fi
 
 export ANDROID_BUILD_TOP=$(gettop)
+export SKIP_ABI_CHECKS=true
 
 function repopick() {
     T=$(gettop)
